@@ -52,9 +52,8 @@ class Scratch
     {
         long product = 1;
         for (char e : nums)
-        {
             product = product * (e - '0');
-        }
+        
         return product;
     }
     
