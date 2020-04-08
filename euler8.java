@@ -120,10 +120,7 @@ class Scratch
             }
             
             if (curr > largest)
-            {
-                System.out.println(i);
                 largest = curr;
-            }
         }
         
         return largest;
