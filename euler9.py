@@ -30,7 +30,7 @@ while flag:
 
     # set the mod value to 1, we will start at 2 inside the loop
     mod = 1
-    # it can be assumed that if c * mod > 1000, we cannot sum a, b, and c to be equal to 1000....
+    # it can be assumed that if c * mod > target, we cannot sum a, b, and c to be equal to the target....
     # it will probably be safe to make this number lower, but this is guaranteed
     while mod * c < target:
         # increment the modifier
