@@ -16,6 +16,8 @@ while flag:
     # increment calculator base
     x += 1
     # calculate the base pythagorean triple values
+    # Equation based on Plato's formula for finding Pythagorean triples:
+    #  (2m)^2 + (m^2 - 1)^2 = (m^2 + 1)^2
     a = (2 * x)
     b = (x ** 2 - 1)
     c = (x ** 2 + 1)
