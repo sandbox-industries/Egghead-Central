@@ -6,7 +6,6 @@ start = time.time_ns()
 # variable for the base number to calculate the pythagorean triple off of.
 x = 1
 flag = True
-# these variables are defined here in an attempt to squeeze every ns out of the run time
 # base pythagorean triple values
 a = 0
 b = 0
