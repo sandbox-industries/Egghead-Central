@@ -3,6 +3,9 @@ import time
 # start a time in nanoseconds
 start = time.time_ns()
 
+# number that we are attempting to find the pythagorean triples that sum to
+target = 1000
+
 # variable for the base number to calculate the pythagorean triple off of.
 x = 1
 flag = True
@@ -22,18 +25,18 @@ while flag:
     c = (x ** 2 + 1)
 
     # if we found the value, stop the loop
-    if a + b + c == 1000 or c > 1000:
+    if a + b + c == target or c > target:
         break
 
     # set the mod value to 1, we will start at 2 inside the loop
     mod = 1
     # it can be assumed that if c * mod > 1000, we cannot sum a, b, and c to be equal to 1000....
     # it will probably be safe to make this number lower, but this is guaranteed
-    while mod * c < 1000:
+    while mod * c < target:
         # increment the modifier
         mod += 1
         # test the modified values
-        if a * mod + b * mod + c * mod == 1000:
+        if a * mod + b * mod + c * mod == target:
             # set the flag to exit the outer loop
             flag = False
             # set the triple values to the modified state since they are the droids we were looking for
