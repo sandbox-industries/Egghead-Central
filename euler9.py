@@ -27,7 +27,7 @@ while flag:
     # if the base set added together is a multiple of our target, we have found our match
     #   This is something Daul pointed out to me. Full credit goes there...
     if target % (a + b + c) == 0:
-        mod = 1000 // (a + b + c)
+        mod = int(1000 / (a + b + c))
         a = a * mod
         b = b * mod
         c = c * mod
