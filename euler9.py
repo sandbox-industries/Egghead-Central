@@ -1,3 +1,14 @@
+# All numbers are either prime or composites of prime numbers. The same can be said about
+# Pythagorean triples: All Pythagorean triples are base sets or a scaled base set. This
+# program answers Project Euler problem 9 (https://projecteuler.net/problem=9) with this
+# principle in mind. 
+#
+# First, the program will calculate a Pythagorean triple base set
+# Then, it will determine if this base set has a sum that is a multiple of the target value
+# Finally, it will calculate the scale necessary to reach the scaled set of the base set
+#
+# For target = 1000, this will complete in 4 iterations of the loop.
+
 import time
 
 # start a time in nanoseconds
@@ -31,6 +42,14 @@ while flag:
         a = a * mod
         b = b * mod
         c = c * mod
+        break
+        
+    # break from infinite loop when no possible solution can be found
+    if c == target:
+        print("Cannot find a solution...")
+        a = -1
+        b = -1
+        c = -1
         break
 
 # stop the timer
