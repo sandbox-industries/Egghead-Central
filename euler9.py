@@ -53,6 +53,7 @@ while flag:
         break
 
 # stop the timer
-print(time.time_ns() - start)
+stop = time.time_ns()
+print(stop - start)
 # print the found values
 print("a:", a, "  b:", b, "  c:", c, "  sum:", a + b + c, "  project euler answer:", a * b * c)
