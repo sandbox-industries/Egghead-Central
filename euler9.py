@@ -24,27 +24,14 @@ while flag:
     b = (x ** 2 - 1)
     c = (x ** 2 + 1)
 
-    # if we found the value, stop the loop
-    if a + b + c == target or c > target:
+    # if the base set added together is a multiple of our target, we have found our match
+    #   This is something Daul pointed out to me. Full credit goes there...
+    if target % (a + b + c) == 0:
+        mod = 1000 // (a + b + c)
+        a = a * mod
+        b = b * mod
+        c = c * mod
         break
-
-    # set the mod value to 1, we will start at 2 inside the loop
-    mod = 1
-    # it can be assumed that if c * mod > target, we cannot sum a, b, and c to be equal to the target....
-    # it will probably be safe to make this number lower, but this is guaranteed
-    while mod * c < target:
-        # increment the modifier
-        mod += 1
-        # test the modified values
-        if a * mod + b * mod + c * mod == target:
-            # set the flag to exit the outer loop
-            flag = False
-            # set the triple values to the modified state since they are the droids we were looking for
-            a = a * mod
-            b = b * mod
-            c = c * mod
-            # exit the loop
-            break
 
 # stop the timer
 print(time.time_ns() - start)
