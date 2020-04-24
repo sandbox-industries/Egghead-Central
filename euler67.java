@@ -10,7 +10,6 @@ public class euler67
     private static File data_file = new File(path);
     
     private static elementNode head = null;
-    private static elementNode currNodes[] = null;
     private static elementNode prevNodes[] = null;
     
     /**
@@ -71,7 +70,7 @@ public class euler67
      */
     private static void buildTree(String lineValues[], int line)
     {
-        currNodes = new elementNode[lineValues.length];
+        elementNode[] currNodes = new elementNode[lineValues.length];
     
         for (int i = 0; i < lineValues.length; i++)
         {
