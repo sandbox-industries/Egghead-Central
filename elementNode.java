@@ -11,10 +11,10 @@ public class elementNode
     private int nodeSum;
     
     // pointers
-    elementNode left;
-    elementNode right;
-    elementNode parent_left;
-    elementNode parent_right;
+    private elementNode left;
+    private elementNode right;
+    private elementNode parent_left;
+    private elementNode parent_right;
     
     
     public elementNode()
