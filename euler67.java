@@ -20,6 +20,8 @@ public class euler67
      */
     public static void main(String args[])
     {
+        long start = System.currentTimeMillis();
+        
         processFile();
     
         for (elementNode e : prevNodes)
@@ -27,7 +29,10 @@ public class euler67
             e.setNodeSum(e.getValue());
             findPathSum(e);
         }
-    
+        
+        long end = System.currentTimeMillis();
+        
+        System.out.println("Duration in ms: " + (end - start));
         System.out.println(head);
     }
     
