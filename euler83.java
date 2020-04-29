@@ -1,9 +1,4 @@
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class euler83
 {
     private static String path = "C:\\Users\\clint\\OneDrive\\Documents\\IDEAProjects\\CS310Egnor\\src\\ProjectEuler67\\euler83.txt";
@@ -34,6 +29,9 @@ public class euler83
         System.out.println(tail);
     }
     
+    /**
+     * Processes the data file line-by-line and passes the line data to a tree builder
+     */
     private static void processFile()
     {
         int line = 0;
@@ -57,13 +55,19 @@ public class euler83
             // split the line into an array of strings with the space as the delimiter
             lineValues = fs.nextLine().split(",");
             // build the row in the data structure
-            buildTree(lineValues, line);
+            buildMap(lineValues, line);
             // iterate the line counter, used for tracking the grid location of the element
             line++;
         }
     }
     
-    private static void buildTree(String lineValues[], int line)
+    /**
+     * Builds the map data structure from the lines passed in by the file processor
+     *
+     * @param lineValues String[], the values of the line split along the commas
+     * @param line int, the line number that the program is on
+     */
+    private static void buildMap(String lineValues[], int line)
     {
         mapNode currNodes[] = new mapNode[lineValues.length];
         
@@ -108,6 +112,12 @@ public class euler83
         prevNodes = currNodes;
     }
     
+    /**
+     * Will recursively find the path with the lowest total value from the initial passed
+     * in value to the very last value in the map
+     *
+     * @param step mapNode, the current element from which the algorithm is looking forward
+     */
     private static void findPath(mapNode step)
     {
         // we have reached root. Return so recursion can continue.
@@ -128,19 +138,23 @@ public class euler83
         // only add the up direction if it exists and we have not gone there before
         if (up != null && up.getPathSum() > step.getPathSum() + up.getValue())
             opts.add(step.getUp());
+        
         // only add the right direction if it exists and we have not gone there before
         if (right != null && right.getPathSum() > step.getPathSum() + right.getValue())
             opts.add(step.getRight());
+        
         // only add the down direction if it exists and we have not gone there before
         if (down != null && down.getPathSum() > step.getPathSum() + down.getValue())
             opts.add(step.getDown());
+        
         // only add the left direction if it exists and we have not gone there before
         if (left != null && left.getPathSum() > step.getPathSum() + left.getValue())
             opts.add(step.getLeft());
+        
         // define array container, convert the arraylist into array of the container type, then sort the array
         mapNode opt[] = new mapNode[opts.size()];
-        opt = opts.toArray(opt);
-        opt = sortList(opt);
+        opt = sortList(opts.toArray(opt));
+        
         // the list is sorted by the lowest path value, recursively run through the options, lowest first
         for (mapNode e : opt)
         {
@@ -151,7 +165,12 @@ public class euler83
         }
     }
     
-    // insertion sort the list of possible directions by the distance value
+    /**
+     * Insertion sort the list of possible paths based on the path sum and the distance from the end of the maze
+     *
+     * @param dists mapNode[], array of possible options to sort
+     * @return mapNode[], the sorted array of possible options
+     */
     private static mapNode[] sortList(mapNode[] dists)
     {
         for (int idx = 1; idx < dists.length; idx++)
