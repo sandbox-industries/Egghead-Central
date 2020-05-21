@@ -1,0 +1,60 @@
+package ProjectEuler67;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class pe42
+{
+    private static String path = "C:\\Users\\clint\\OneDrive\\Documents\\IDEAProjects\\CS310Egnor\\src\\ProjectEuler67\\words.txt";
+    
+    public static void main(String args[])
+    {
+        long start = System.currentTimeMillis();
+        
+        int total = 0;
+        Scanner fs = null;
+        String lineValues[] = new String[1];
+    
+        // open the file
+        try
+        {
+            File data_file = new File(path);
+            fs = new Scanner(data_file);
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("File not found exception for file " + e);
+            System.exit(1);
+        }
+    
+        // read the file while there are lines left in the file
+        while (fs.hasNextLine())
+        {
+            // split the line into an array of strings
+            lineValues = fs.nextLine().split(",");
+            for (String word : lineValues)
+            {
+                double val = 0;
+                char word_ca[] = word.toCharArray();
+                // sum the letter positions in the word
+                //   ignore the first and last character because they are quotes
+                for (int i = 1; i < word_ca.length - 1; i++)
+                    val += word_ca[i] - 64;
+                
+                if (isTriangleNum(val))
+                    total++;
+            }
+        }
+        System.out.println("Total triangle words in file: " + total);
+        
+        long end = System.currentTimeMillis();
+        System.out.println("Duration (ms): " + (end - start));
+    }
+    
+    private static boolean isTriangleNum(double num)
+    {
+        return (Math.sqrt(8 * num + 1) - 1)/2 % 1 == 0;
+    }
+    
+}
