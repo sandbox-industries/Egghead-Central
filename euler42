@@ -30,26 +30,31 @@ public class pe42
     
         // read the file while there are lines left in the file
         while (fs.hasNextLine())
-        {
-            // split the line into an array of strings
-            lineValues = fs.nextLine().split(",");
-            for (String word : lineValues)
-            {
-                double val = 0;
-                char word_ca[] = word.toCharArray();
-                // sum the letter positions in the word
-                //   ignore the first and last character because they are quotes
-                for (int i = 1; i < word_ca.length - 1; i++)
-                    val += word_ca[i] - 64;
-                
-                if (isTriangleNum(val))
-                    total++;
-            }
-        }
+            total += countTriangleWords(fs.nextLine().split(","));
+        
         System.out.println("Total triangle words in file: " + total);
         
         long end = System.currentTimeMillis();
         System.out.println("Duration (ms): " + (end - start));
+    }
+    
+    private static int countTriangleWords(String values[])
+    {
+        int total = 0;
+        for (String word : values)
+        {
+            double val = 0;
+            char word_ca[] = word.toCharArray();
+            // sum the letter positions in the word
+            //   ignore the first and last character because they are quotes
+            for (int i = 1; i < word_ca.length - 1; i++)
+                val += word_ca[i] - 64;
+            
+            if (isTriangleNum(val))
+                total++;
+        }
+        
+        return total;
     }
     
     private static boolean isTriangleNum(double num)
