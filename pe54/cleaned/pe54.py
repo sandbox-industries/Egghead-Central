@@ -54,7 +54,7 @@ for line in dat:
                 p1_wins += 1
 
 stop = time.time()
-print("duration (ns):", stop-start)
+print("duration (sec):", stop-start)
 # Project Euler only cares about how many games player 1 wins in the given file
 print(p1_wins)
 
