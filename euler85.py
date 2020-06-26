@@ -1,19 +1,23 @@
 # No. This is not efficient.
-# No. I don't care. 
-# Yes. I am leaving it as it is. 
+# No. I don't care.
+# Yes. I am leaving it as it is.
 # The answer is right.
 
-row = 1
-col = 2
+row = 10
+col = 10
 count = 0
 
-# arbitrary end condition
-while count < 1990000:
-    # initialize values each iteration
-    row += 1
+target = 2000000
+
+while True:
+    col += 1
+    # arbitrary value
+    if col > 100:
+        col = 10
+        row += 1
+    # arbitrary end condition
     if row > 100:
-        col += 1
-        row = 2
+        break
     count = 0
 
     # determine the number of shapes per row/col based on initialized values
@@ -30,6 +34,10 @@ while count < 1990000:
                 if jj + j <= col + 1:
                     c += 1
             count += r*c
+
+    # through testing, found the minimum possible score, used this as condition to catch first instance of it
+    if target - count == 2:
+        break
 
 print(count)
 print(row, col, row * col)
