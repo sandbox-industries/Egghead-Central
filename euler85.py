@@ -1,3 +1,8 @@
+# No. This is not efficient.
+# No. I don't care. 
+# Yes. I am leaving it as it is. 
+# The answer is right.
+
 row = 1
 col = 2
 count = 0
