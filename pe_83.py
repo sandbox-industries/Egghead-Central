@@ -67,7 +67,7 @@ def sort_support(e: Node):
 
 def findPath(step: Node):
     """
-    Will recursively find the path with the lowest tottal value from the initial passed node to the very last node
+    Will recursively find the path with the lowest total value from the initial passed node to the very last node
 
     :param step: the current element from which the algorithm is looking forward
     :return: None
@@ -75,7 +75,7 @@ def findPath(step: Node):
     # reference the global tail variable instead of making a local variable
     global tail
 
-    # we have reached the end of the table, so return so recursion can continue
+    # we have reached the end of the table, return so recursion can continue
     if step is tail:
         return
 
